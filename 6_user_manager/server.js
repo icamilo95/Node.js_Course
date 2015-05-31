@@ -36,6 +36,18 @@ app.get('/edit/:id', function(req,res){
    });
 });
 
+
+app.post('/new', function(req,res){
+   models.User.create ({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      age: req.body.age,
+      username: req.body.username
+   }).done(function(){ // I put this callback here cause JS is asynchronous so it'll do this inmediately after getting the information
+      res.redirect("/");
+   });
+});
+
 app.put('/edit/:id', function(req,res){
    models.User.findById(req.params.id).done(function(user) {
       user.updateAttributes({
@@ -49,18 +61,13 @@ app.put('/edit/:id', function(req,res){
    });
 });
 
-app.post('/new', function(req,res){
-   models.User.create ({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      age: req.body.age,
-      username: req.body.username
-   }).done(function(){ // I put this callback here cause JS is asynchronous so it'll do this inmediately after getting the information
-      res.redirect("/");
+app.delete('/edit/:id', function(req,res){
+   models.User.findById(req.params.id).done(function(user) {
+      user.destroy().done(function(){
+         res.redirect("/");
+      });
    });
 });
-
-
 
 
 
