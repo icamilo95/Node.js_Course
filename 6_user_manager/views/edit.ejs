@@ -7,11 +7,12 @@
 </head>
 <body>
    <h3>Edit user</h3>   
-   <form method="post" action="/new" >
-      <input type="text" name="firstname" placeholder="Firstname">
-      <input type="text" name="lastname" placeholder="Lastname">
-      <input type="text" name="username" placeholder="Username">
-      <input type="text" name="age" placeholder="Age">
+
+   <form method="post" action="/edit/<%= userInfo.id %>?_method=put" >
+      <input type="text" name="firstname" placeholder="Firstname" value="<%= userInfo.firstname %>">
+      <input type="text" name="lastname" placeholder="Lastname" value="<%= userInfo.lastname %>">
+      <input type="text" name="username" placeholder="Username" value="<%= userInfo.username %>">
+      <input type="text" name="age" placeholder="Age" value="<%= userInfo.age %>">
       <button type="submit">Submit User</button>
    </form>
 

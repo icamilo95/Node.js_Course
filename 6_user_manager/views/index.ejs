@@ -24,6 +24,17 @@
             <td>icamilo95</td>
             <td><a href="#">Edit User</a></td>
          </tr>
+         
+            <% for (var i = 0; i < allUsers.length; i++) { %>
+               <tr>
+                  <td><%= allUsers[i].firstname %></td>
+                  <td><%= allUsers[i].lastname %></td>
+                  <td><%= allUsers[i].age %></td>
+                  <td><%= allUsers[i].username %></td>
+                  <td><a href="/edit/<%= allUsers[i].id  %>" >Edit User</a></td>
+               </tr>
+            <% }; %>
+            
       </tbody>
    </table>
 
